@@ -14,7 +14,21 @@ Open http://localhost:3000. Run the following to check and build the project.
     npm run typecheck
     npm run build
 
-The build generates the static site in the out directory. Set the Vercel project's Root Directory to redesign. The checked-in Vercel configuration runs the Next.js build and serves the exported files from out. The legacy Jekyll site has its source at the repository root.
+The build generates the static site in the out directory. The legacy Jekyll site has its source at the repository root.
+
+## Deploying with the Vercel CLI
+
+Deploy a clean copy of this directory to the ppsanchez Vercel project. The copy has no Git metadata, so the deployment uses the Vercel CLI session independently of any GitHub account connected to Vercel. From the repository root, run:
+
+    release_dir="$(mktemp -d)"
+    git archive HEAD:redesign | tar -x -C "$release_dir"
+    (
+      cd "$release_dir" || exit
+      vercel link --yes --project ppsanchez --scope pedrossg-web
+      vercel deploy --yes --scope pedrossg-web
+    )
+
+The Vercel configuration runs the Next.js build and serves the files from out. Verify the generated deployment URL before promoting it to production.
 
 ## Updating content
 
