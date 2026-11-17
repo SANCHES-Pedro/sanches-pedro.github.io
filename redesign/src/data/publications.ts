@@ -8,7 +8,11 @@ export interface Publication {
 
 export const publications: readonly Publication[] = [
   { year: 2026, title: "CheXGenBench: A Unified Benchmark for Fidelity, Privacy and Utility of Synthetic Chest Radiographs",
-    links: [["TMLR, June 2026", "https://www.research.ed.ac.uk/en/publications/chexgenbench-a-unified-benchmark-for-fidelity-privacy-and-utility/"], ["2025 preprint", "https://arxiv.org/abs/2505.10496"]] },
+    links: [
+      ["TMLR, June 2026", "https://www.research.ed.ac.uk/en/publications/chexgenbench-a-unified-benchmark-for-fidelity-privacy-and-utility/"],
+      ["2025 preprint", "https://arxiv.org/abs/2505.10496"],
+      ["Project and dataset", "https://raman1121.github.io/CheXGenBench/"],
+    ] },
   { year: 2025, title: "Causal Ordering for Structure Learning from Time Series",
     links: [["TMLR, December 2025", "https://www.research.ed.ac.uk/en/publications/causal-ordering-for-structure-learning-from-time-series/"], ["preprint", "https://arxiv.org/abs/2510.24639"]] },
   { year: 2025, title: "Confounder-Aware Foundation Modeling for Accurate Phenotype Profiling in Cell Imaging",
