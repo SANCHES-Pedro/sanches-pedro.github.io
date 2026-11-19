@@ -6,15 +6,11 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="page-width nav-inner">
-        <Link className="wordmark" href="/" aria-label="Pedro P. Sanchez home">
-          <span aria-hidden="true" /> PPS
-        </Link>
         <nav className="site-nav" aria-label="Main navigation">
           <Link href="/#about">About</Link>
           <Link href="/cv/">Visual CV</Link>
           <Link href="/publications/">Publications</Link>
         </nav>
-        <ExternalLink className="nav-scholar" href={profile.scholar}>Scholar</ExternalLink>
       </div>
     </header>
   );

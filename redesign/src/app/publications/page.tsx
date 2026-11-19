@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ExternalLink, SourceLinks } from "@/components/links";
-import { getStory, profile } from "@/data/portfolio";
+import { getStory, profile, type SourceLink } from "@/data/portfolio";
 import { publications } from "@/data/publications";
 
 export const metadata: Metadata = {
@@ -9,6 +9,10 @@ export const metadata: Metadata = {
 };
 
 const years = [...new Set(publications.map((publication) => publication.year))];
+
+function scholarCitation(id: string): SourceLink {
+  return ["Scholar", "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=KPchGe4AAAAJ&citation_for_view=KPchGe4AAAAJ:" + id];
+}
 
 export default function Publications() {
   return (
@@ -25,7 +29,10 @@ export default function Publications() {
               {publications.filter((publication) => publication.year === year).map((publication) => (
                 <li key={publication.title}>
                   <h3>{publication.title}</h3>
-                  <SourceLinks links={publication.links} />
+                  <SourceLinks links={[
+                    ...publication.links,
+                    scholarCitation(publication.scholarId),
+                  ]} />
                 </li>
               ))}
             </ul>
@@ -36,15 +43,15 @@ export default function Publications() {
           <ul className="publication-list">
             <li>
               <h3>Causal Deep Learning on Images</h3>
-              <SourceLinks links={[getStory("phd").links[0]]} />
+              <SourceLinks links={[getStory("phd").links[0], scholarCitation("IWHjjKOFINEC")]} />
             </li>
           </ul>
         </section>
         <section className="publication-group" aria-labelledby="patents">
           <h2 id="patents">Patent applications</h2>
           <ul className="publication-list">
-            <li><h3>Data Processing Apparatus and Method</h3><SourceLinks links={getStory("patent1").links} /></li>
-            <li><h3>Image Data Processing Apparatus and Method</h3><SourceLinks links={getStory("patent2").links} /></li>
+            <li><h3>Data Processing Apparatus and Method</h3><SourceLinks links={[...getStory("patent1").links, scholarCitation("mVmsd5A6BfQC")]} /></li>
+            <li><h3>Image Data Processing Apparatus and Method</h3><SourceLinks links={[...getStory("patent2").links, scholarCitation("L8Ckcad2t8MC")]} /></li>
           </ul>
         </section>
       </div>

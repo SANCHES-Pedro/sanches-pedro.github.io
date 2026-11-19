@@ -154,13 +154,21 @@ item("patent2", "Image Segmentation Invention", "Published US patent application
   "A patent drawing shows image patches aligning into a segmented structure.",
   [["US20240355098A1","https://patents.google.com/patent/US20240355098A1/en"]]);
 
+item("kite", "Kitesurfing", "Sport", "", "",
+  "A kitesurfer rides across waves while a kite moves with the wind.",
+  []);
+item("cycling", "Cycling", "Sport", "", "",
+  "A bicycle moves along a mountain road, with its wheels and pedals turning.",
+  []);
+item("snowboarding", "Snowboarding", "Sport", "", "",
+  "A snowboarder carves down a snowy slope with mountains in the background.",
+  []);
+
 export const groups = {
   research: ["diffan","chex","temporal","radedit","diffscm","healthy","benchmark","grounding","monai"],
   startups: ["sinkove","form","hike"],
-  projects: ["form","hike","radedit","uception","benchmark","monai","grounding","chex","diffscm","sinkove"],
   cv: ["hike","sinkove","phd","microsoft","canon","dual","strasbourg","samsung","ge","icube"],
-  interests: ["causal","generative","imaging","geometry"],
-  service: ["award","tutorial","dream","patent1","patent2"]
+  sports: ["kite","cycling","snowboarding"],
 } as const satisfies Record<string, readonly SketchId[]>;
 
 export type PortfolioGroup = keyof typeof groups;

@@ -562,6 +562,33 @@ function cycling(a: Sheet) {
     line(pedalX - 6, pedalY, pedalX + 6, pedalY, ink, 2);
   });
 }
+
+function snowboarding(a: Sheet) {
+  const { shape, line, ellipse, local, accent, ink, faint, light, p } = a;
+  shape("M35 171L135 61L207 141L280 46L397 170L476 82L609 180", faint, light, 1.6, true);
+  shape("M104 96L135 61L160 91L143 85L129 98Z M250 82L280 46L316 85L284 75L271 91Z", faint, null, 1.3);
+  shape("M34 211Q201 142 608 314", ink, null, 1.5, true);
+  shape("M54 246Q243 179 594 337", faint, null, 1.1);
+
+  const riderX = lerp(249, 370, p);
+  const riderY = lerp(174, 222, p);
+  local(riderX, riderY, 1.12, () => {
+    ellipse(-5, -64, 12, 12, ink, light, 2.7);
+    shape("M-17 -66Q-8 -83 8 -73L7 -64Z", ink, accent, 2, true);
+    line(-10, -61, 7, -61, accent, 3);
+    shape("M-8 -51L-28 -13L-3 0L13 -33Z", ink, light, 2.8, true);
+    shape("M-15 -40L-42 -26L-65 -35 M3 -39L28 -23L47 -25", ink, null, 3.8, true);
+    shape("M-21 -9L-33 14L-12 37 M-3 0L19 17L30 35", ink, null, 5, true);
+    shape("M-50 36Q0 52 58 30Q65 34 54 43Q1 61 -50 48Q-63 43 -50 36Z", ink, accent, 2.8, true);
+    line(-19, 40, -5, 40, ink, 3);
+    line(24, 39, 37, 36, ink, 3);
+    shape("M-56 39Q-82 39 -100 22 M-62 51Q-90 51 -108 40", accent, null, 2, true);
+  }, -8);
+
+  shape("M90 278Q153 245 " + (riderX - 55) + " " + (riderY + 53), accent, null, 1.8, true);
+  shape("M100 290Q168 263 " + (riderX - 64) + " " + (riderY + 65), faint, null, 1.1);
+}
+
 const scenes={
   hike:["clay",orthotic], sinkove:["violet",synthesis], diffan:["sage",causalGraph], form:["blue",cad],
   radedit:["rose",edit], chex:["blue",ledger], diffscm:["gold",counterfactual],
@@ -574,7 +601,7 @@ const scenes={
   imaging:["blue",a=>branches(a,true)], geometry:["clay",a=>cad(a,true)],
   dream:["violet",teaching], tutorial:["blue",a=>teaching(a,"diffusion")],
   award:["gold",a=>teaching(a,"award")], patent1:["sage",a=>education(a)], patent2:["rose",a=>branches(a,true)],
-  kite:["blue",kitesurfing], cycling:["sage",cycling]
+  kite:["blue",kitesurfing], cycling:["sage",cycling], snowboarding:["violet",snowboarding]
 } satisfies Record<string, [Theme, (sheet: Sheet) => void]>;
 
 export type SketchId = keyof typeof scenes;

@@ -68,20 +68,6 @@ export function SketchThumbnail({ id }: { id: SketchId }) {
   return <canvas ref={canvas} className="sketch thumbnail" width={320} height={180} aria-hidden="true" />;
 }
 
-export function HobbySketch({ id, title }: { id: "kite" | "cycling"; title: string }) {
-  const { canvas, phase, play } = useSketch(id, true);
-  const action = phase === "playing" ? "Finish" : phase === "finished" ? "Replay" : "Play";
-
-  return (
-    <button className="hobby" type="button" aria-label={action + " " + title.toLowerCase() + " sketch"} onClick={play}>
-      <canvas ref={canvas} className="sketch" width={384} height={216} aria-hidden="true" />
-      <span className="hobby-caption">
-        {title} <span aria-hidden="true">{phase === "playing" ? "■" : phase === "finished" ? "↻" : "▷"}</span>
-      </span>
-    </button>
-  );
-}
-
 export function StorySketch({ story, standalone }: { story: Story; standalone: boolean }) {
   const { canvas, phase, play } = useSketch(story.id);
   const action = phase === "playing" ? "Finish" : phase === "finished" ? "Replay" : "Play";
@@ -103,8 +89,8 @@ export function StorySketch({ story, standalone }: { story: Story; standalone: b
             {action + " sketch"}
           </button>
         </div>
-        <p className="story-summary">{story.summary}</p>
-        <SourceLinks links={story.links} />
+        {story.summary && <p className="story-summary">{story.summary}</p>}
+        {story.links.length > 0 && <SourceLinks links={story.links} />}
       </figcaption>
     </figure>
   );

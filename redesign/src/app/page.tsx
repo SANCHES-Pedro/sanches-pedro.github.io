@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import PortfolioExplorer from "@/components/portfolio-explorer";
-import { HobbySketch } from "@/components/sketch";
 
 export default function Home() {
   return (
@@ -41,10 +40,6 @@ export default function Home() {
               fetchPriority="high"
             />
           </figure>
-          <div className="hobbies" role="group" aria-label="Outside work">
-            <HobbySketch id="kite" title="Kitesurfing" />
-            <HobbySketch id="cycling" title="Cycling" />
-          </div>
         </div>
       </section>
       <PortfolioExplorer />
